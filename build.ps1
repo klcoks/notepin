@@ -67,6 +67,37 @@ Compress-Archive -Path "$buildDir\*" -DestinationPath $zipPath -Force
 Remove-Item $buildDir -Recurse -Force
 
 $size = (Get-Item $zipPath).Length / 1KB
+
+# Security scan: ensure no real API keys / tokens leaked into the zip
+Write-Host ""
+Write-Host "Running security scan..." -ForegroundColor Cyan
+$tmpDir = "$env:TEMP\notepin-zip-check-$([Guid]::NewGuid().ToString('N'))"
+Expand-Archive -Path $zipPath -DestinationPath $tmpDir -Force
+# Real key patterns: long alphanumeric AFTER prefix, no 'x' placeholder
+$dangerPatterns = @(
+    '(?<![x])sk-[a-zA-Z0-9]{40,}',                # DeepSeek/OpenAI real key
+    'secret_[a-zA-Z0-9]{40,}',                    # Notion v1 token
+    'ntn_[a-zA-Z0-9]{40,}',                       # Notion v2 token
+    'github_pat_[a-zA-Z0-9_]{50,}',               # GitHub fine-grained PAT
+    'ghp_[a-zA-Z0-9]{30,}'                        # GitHub classic PAT
+)
+$leak = $false
+foreach ($pat in $dangerPatterns) {
+    $hits = Get-ChildItem $tmpDir -Recurse -File | Select-String -Pattern $pat
+    if ($hits) {
+        Write-Host "  [!] Possible leak ($pat):" -ForegroundColor Red
+        $hits | ForEach-Object { Write-Host "      $($_.Filename):$($_.LineNumber)" -ForegroundColor Red }
+        $leak = $true
+    }
+}
+Remove-Item $tmpDir -Recurse -Force
+if ($leak) {
+    Write-Host "✗ Build aborted: secrets detected in zip!" -ForegroundColor Red
+    Remove-Item $zipPath -Force
+    exit 1
+}
+Write-Host "  ✓ No secrets found" -ForegroundColor Green
+
 Write-Host ""
 Write-Host "✓ Done!" -ForegroundColor Green
 Write-Host "  Output: $zipPath"
