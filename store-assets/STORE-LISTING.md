@@ -1,9 +1,11 @@
-﻿# Chrome Web Store 涓婃灦璧勬枡
+# Chrome Web Store Listing Materials
 
-> 涓婁紶 zip 鏃剁洿鎺ュ鍒剁矘璐翠笅闈㈢殑鏂囧瓧鍒板搴斿瓧娈点€?
+> Copy-paste the text below into the corresponding fields when submitting.
+
 ---
 
-## 馃摑 鍟嗗簵淇℃伅锛圗nglish锛?
+## 📝 Listing (English)
+
 ### Name
 ```
 NotePin - AI Web Clipper for Notion
@@ -18,30 +20,30 @@ One-click save any web page or selection to Notion. AI auto-summarizes, tags and
 ```
 NotePin turns your scattered bookmarks into an organized, searchable knowledge base.
 
-鉁?FEATURES
+✨ FEATURES
 
-馃搫 One-click save 鈥?Press Ctrl+Shift+S to save the current page to Notion, or right-click on any selection.
+📄 One-click save — Press Ctrl+Shift+S to save the current page to Notion, or right-click on any selection.
 
-馃 AI-powered organization 鈥?Automatically generate a 3-sentence summary, 3-5 relevant tags, and a category for every saved page. Powered by DeepSeek (cheap and fast).
+🤖 AI-powered organization — Automatically generate a 3-sentence summary, 3-5 relevant tags, and a category for every saved page. Powered by DeepSeek (cheap and fast).
 
-馃摎 Direct to Notion 鈥?Content goes straight into your own Notion database. No middleman, no subscription.
+📚 Direct to Notion — Content goes straight into your own Notion database. No middleman, no subscription.
 
-馃寪 Bilingual 鈥?English and Chinese UI, with smart field-name detection (works with both English and Chinese database fields).
+🌐 Bilingual — English and Chinese UI, with smart field-name detection (works with both English and Chinese database fields).
 
-馃敀 Privacy first 鈥?No backend server. No tracking. Your API keys and content never touch our servers because we don't have any. Everything runs in your browser.
+🔒 Privacy first — No backend server. No tracking. Your API keys and content never touch our servers because we don't have any. Everything runs in your browser.
 
-馃晲 Local history 鈥?Quick access to your recent saves right from the popup.
+🕐 Local history — Quick access to your recent saves right from the popup.
 
-馃幆 WHO IS THIS FOR
+🎯 WHO IS THIS FOR
 
-鈥?Researchers tired of bookmarks they never revisit
-鈥?Knowledge workers building a second brain in Notion
-鈥?Developers and designers collecting inspiration daily
-鈥?Anyone who wants AI-organized clipping without paying for another SaaS
+• Researchers tired of bookmarks they never revisit
+• Knowledge workers building a second brain in Notion
+• Developers and designers collecting inspiration daily
+• Anyone who wants AI-organized clipping without paying for another SaaS
 
-鈿欙笍 SETUP (one time, ~5 minutes)
+⚙️ SETUP (one time, ~5 minutes)
 
-1. Get a DeepSeek API key (free credits on signup) 鈥?https://platform.deepseek.com
+1. Get a DeepSeek API key (free credits on signup) — https://platform.deepseek.com
 2. Create a Notion Integration and database (instructions in the extension settings)
 3. Paste both into the settings page and click Save
 
@@ -49,9 +51,9 @@ That's it. Your bookmarks will never go to die again.
 
 ---
 
-馃敁 OPEN SOURCE
-Source code: https://github.com/klcoks/NotePin
-Privacy policy: https://klcoks.github.io/NotePin/privacy-policy.html
+🔓 OPEN SOURCE
+Source code: https://github.com/klcoks/notepin
+Privacy policy: https://klcoks.github.io/notepin/store-assets/privacy-policy.html
 ```
 
 ### Category
@@ -59,122 +61,129 @@ Privacy policy: https://klcoks.github.io/NotePin/privacy-policy.html
 Productivity
 ```
 
-### Language
+### Languages
 ```
 English (default), Chinese (Simplified)
 ```
 
 ---
 
-## 馃摑 鍟嗗簵淇℃伅锛堜腑鏂囷級
+## 📝 商店信息（中文）
 
-> Chrome 鍟嗗簵鍏佽鍚屾椂濉璇█ listing銆傚鏋滀綘鍙～鑻辨枃涔熷彲浠ワ紝浣嗗缓璁腑鑻遍兘濉紝瑕嗙洊鏇村箍銆?
-### 鍚嶇О
+> Chrome 商店允许同时填多语言 listing。建议中英都填，覆盖更广。
+
+### 名称
 ```
-鏅哄瓨 - AI 鏅鸿兘缃戦〉鏀惰棌鍒?Notion
-```
-
-### 绠€鐭弿杩?```
-涓€閿敹钘忕綉椤靛埌 Notion锛孉I 鑷姩鐢熸垚鎽樿銆佹爣绛惧拰鍒嗙被銆傝浣犵殑鏀惰棌涓嶅啀鍚冪伆銆?```
-
-### 璇︾粏鎻忚堪
-```
-鏅哄瓨鎶婁綘鏁ｄ贡鐨勬祻瑙堝櫒鏀惰棌澶癸紝鍙樻垚涓€涓湁搴忋€佸彲鎼滅储鐨勪釜浜虹煡璇嗗簱銆?
-鉁?鏍稿績鍔熻兘
-
-馃搫 涓€閿敹钘?鈥?Ctrl+Shift+S 鏀惰棌鏁撮〉锛屾垨鍙抽敭鏀惰棌閫変腑鏂囧瓧銆?
-馃 AI 鑷姩鏁寸悊 鈥?姣忔鏀惰棌鑷姩鐢熸垚 3 鍙ユ憳瑕併€?-5 涓浉鍏虫爣绛俱€佹櫤鑳藉垎绫汇€傜敱 DeepSeek 椹卞姩锛屼究瀹滃張蹇€?
-馃摎 鐩磋揪 Notion 鈥?鍐呭鐩存帴鍐欏叆浣犺嚜宸辩殑 Notion 鏁版嵁搴撱€傛棤涓棿鏈嶅姟鍣ㄣ€佹棤璁㈤槄璐广€?
-馃寪 涓嫳鍙岃 鈥?瀹屾暣涓嫳鏂囩晫闈紝鏅鸿兘璇嗗埆鏁版嵁搴撲腑鑻辨枃瀛楁鍚嶃€?
-馃敀 闅愮鑷充笂 鈥?娌℃湁浠讳綍鍚庣鏈嶅姟鍣ㄣ€佷笉鍋氬煁鐐圭粺璁°€備綘鐨?API Key 鍜岀綉椤靛唴瀹逛粠涓嶇粡杩囨垜浠殑鏈嶅姟鍣紝鍥犱负鎴戜滑鏍规湰娌℃湁鏈嶅姟鍣紝涓€鍒囧湪浣犵殑娴忚鍣ㄥ唴杩愯銆?
-馃晲 鏈湴鍘嗗彶 鈥?寮圭獥蹇€熸煡鐪嬫渶杩戞敹钘忋€?
-馃幆 閫傚悎璋?
-鈥?鏀惰棌涓€鍫嗛摼鎺ュ嵈浠庝笉缈荤湅鐨勭爺绌惰€?鈥?鍦?Notion 鏋勫缓绗簩澶ц剳鐨勭煡璇嗗伐浣滆€?鈥?姣忓ぉ鍥ょН鐏垫劅鐨勮璁″笀鍜屽紑鍙戣€?鈥?涓嶆兂涓哄壀钘忓姛鑳藉啀璁㈤槄涓€涓?SaaS 鐨勪汉
-
-鈿欙笍 閰嶇疆锛堜竴娆″埌浣嶏紝绾?5 鍒嗛挓锛?
-1. 鐢宠 DeepSeek API Key锛堟敞鍐岄€侀搴︼級鈥?https://platform.deepseek.com
-2. 鍒涘缓 Notion Integration 鍜屾暟鎹簱锛堣缃〉鍐呮湁璇︾粏寮曞锛?3. 鎶婁袱涓?Key 绮樿创鍒拌缃〉 鈫?淇濆瓨
-
-瀹屼簨銆備綘鐨勬敹钘忓す鍐嶄篃涓嶄細鍚冪伆銆?
----
-
-馃敁 寮€婧?婧愮爜锛歨ttps://github.com/klcoks/NotePin
-闅愮鏀跨瓥锛歨ttps://klcoks.github.io/NotePin/privacy-policy.html
+NotePin - AI 智能网页收藏到 Notion
 ```
 
----
+### 简短描述
+```
+一键收藏网页到 Notion，AI 自动生成摘要、标签和分类。让你的收藏不再吃灰。
+```
 
-## 馃柤锔?蹇呴渶鐨勬埅鍥?
-Chrome Web Store 瑕佹眰鑷冲皯 1 寮犮€佹渶澶?5 寮犳埅鍥撅細
+### 详细描述
+```
+NotePin（智存）把你散乱的浏览器收藏夹，变成一个有序、可搜索的个人知识库。
 
-- **灏哄**锛?280脳800 鎴?640脳400 鍍忕礌
-- **鏍煎紡**锛歅NG 鎴?JPEG
+✨ 核心功能
 
-### 寤鸿鐨?5 寮犳埅鍥?
-1. **Hero 涓诲浘**锛氭彃浠?popup 鍦ㄦ煇涓綉椤典笂灞曞紑锛屾樉绀?Save whole page"鎸夐挳
-2. **AI 澶勭悊涓?*锛歱opup 鏄剧ず "Analyzing with AI..." 鐘舵€?3. **淇濆瓨鎴愬姛**锛歱opup 鏄剧ず"Saved 鉁?鍜屾渶杩戞敹钘忓垪琛?4. **Notion 鏁堟灉**锛氭埅鍥句綘鐨?Notion 鏁版嵁搴撻噷宸茬粡琚彃浠朵繚瀛樼殑鍑犳潯璁板綍锛堝甫鏍囩銆佸垎绫汇€佹憳瑕侊級
-5. **璁剧疆椤?*锛氭埅鍥捐嫳鏂囩増鐨?options 椤甸潰锛堝甫璇█鍒囨崲鍣級
+📄 一键收藏 — Ctrl+Shift+S 收藏整页，或右键收藏选中文字。
 
-### 鎬庝箞鎴浘
+🤖 AI 自动整理 — 每次收藏自动生成 3 句摘要、3-5 个相关标签、智能分类。由 DeepSeek 驱动，便宜又快。
 
-鏈€绠€鍗曠殑鏂规硶锛?1. 鎵撳紑浠绘剰涓€涓唴瀹逛赴瀵岀殑缃戦〉锛堟瘮濡傛煇绡囧崥瀹㈡枃绔狅級
-2. 鍦?Chrome 缂╂斁鍒?100%
-3. 鐢?Win+Shift+S锛圵indows锛夋垨娴忚鍣ㄦ墿灞曪紙濡?GoFullPage锛夋埅鍥?4. 鐢ㄤ换浣曞湪绾垮浘鐗囩紪杈戝伐鍏凤紙濡?https://www.figma.com 鍏嶈垂锛夎皟鏁村埌 1280脳800
+📚 直达 Notion — 内容直接写入你自己的 Notion 数据库。无中间服务器、无订阅费。
 
-涓嶄細鐨勮瘽锛屽憡璇夋垜锛屾垜鍙互甯綘鍐欎竴涓?*鑷姩鍖栨埅鍥捐剼鏈?*鐢?Playwright 璺戝嚭鏉ャ€?
----
+🌐 中英双语 — 完整中英文界面，智能识别数据库中英文字段名。
 
-## 馃帹 鎺ㄥ箍妯箙锛堝彲閫変絾鎺ㄨ崘锛?
-### Small promo tile锛堝繀闇€锛屽睍绀哄湪鎼滅储缁撴灉锛?- 灏哄锛?40脳280
-- 鍐呭锛氭彃浠?logo + "NotePin" 鏂囧瓧 + 涓€鍙?slogan
+🔒 隐私至上 — 没有任何后端服务器、不做埋点统计。你的 API Key 和网页内容从不经过我们的服务器，因为我们根本没有服务器，一切在你的浏览器内运行。
 
-### Marquee锛堝彲閫夛紝灞曠ず鍦ㄧ簿閫変綅缃級
-- 灏哄锛?400脳560
-- 鍐呭锛氭洿璇︾粏鐨勪骇鍝佸浼犲浘
+🕐 本地历史 — 弹窗快速查看最近收藏。
 
-> 涓嶄細鍋氾紵鍛婅瘔鎴戯紝鎴戝彲浠ョ粰浣犲嚭 SVG/Figma 妯℃澘銆?
----
+🎯 适合谁
 
-## 鉁?鎻愪氦鍓?Checklist
+• 收藏一堆链接却从不翻看的研究者
+• 在 Notion 构建第二大脑的知识工作者
+• 每天囤积灵感的设计师和开发者
+• 不想为剪藏功能再订阅一个 SaaS 的人
 
-- [ ] 娉ㄥ唽 Chrome 寮€鍙戣€呰处鍙凤紙$5 涓€娆℃€э紝鍦板潃锛歨ttps://chrome.google.com/webstore/devconsole锛?- [ ] 鎶?`store-assets/privacy-policy.html` 涓婁紶鍒?GitHub Pages 鎷垮埌 URL锛堟暀绋嬭涓嬶級
-- [ ] 鍑嗗濂?1-5 寮?1280脳800 鎴浘
-- [ ] 鍑嗗 440脳280 鐨?promo tile锛堝彲閫夛級
-- [ ] 鎷垮埌闅愮鏀跨瓥 URL
-- [ ] 涓婁紶 `dist/NotePin-v1.0.0.zip`
-- [ ] 濉啓鍟嗗簵鎻忚堪锛堝鍒朵笂闈㈣嫳鏂?涓枃锛?- [ ] Single purpose 瀛楁锛歚Save web pages with AI summaries to a Notion database`
-- [ ] Permission justification锛氭瘡涓潈闄愬啓鏄庣敤閫旓紙鍙傝€?privacy-policy.html 绗?4 鑺傦級
-- [ ] 閫夋嫨绫诲埆锛歅roductivity
-- [ ] 閫夋嫨 maturity rating锛欵veryone
-- [ ] 鎻愪氦瀹℃牳
+⚙️ 配置（一次到位，约 5 分钟）
+
+1. 申请 DeepSeek API Key（注册送额度）— https://platform.deepseek.com
+2. 创建 Notion Integration 和数据库（设置页内有详细引导）
+3. 把两个 Key 粘贴到设置页 → 保存
+
+完事。你的收藏夹再也不会吃灰。
 
 ---
 
-## 馃摗 GitHub Pages 鎵樼闅愮鏀跨瓥锛? 鍒嗛挓锛?
-### 鏂规硶 A锛氱敤涓撳睘浠撳簱
+🔓 开源
+源码：https://github.com/klcoks/notepin
+隐私政策：https://klcoks.github.io/notepin/store-assets/privacy-policy.html
+```
 
-1. 鍦?GitHub 鍒涘缓鏂颁粨搴?`NotePin`锛堝叕寮€锛?2. 鎶婃暣涓」鐩帹涓婂幓锛?   ```bash
-   cd i:\DEV2\chajian
-   git init
-   git add .
-   git commit -m "Initial commit"
-   git branch -M main
-   git remote add origin https://github.com/klcoks/NotePin.git
-   git push -u origin main
-   ```
-3. 浠撳簱 鈫?Settings 鈫?Pages 鈫?Source 閫?`main` branch + `/store-assets` 鐩綍 鈫?Save
-4. 鍑犲垎閽熷悗璁块棶锛歚https://klcoks.github.io/NotePin/privacy-policy.html`
-
-### 鏂规硶 B锛氭瀬绠€鐗堬紙鍙斁闅愮鏀跨瓥锛?
-1. 鍒涘缓鏂颁粨搴?`klcoks.github.io`锛堝叕寮€锛屽繀椤荤敤杩欎釜鍚嶅瓧锛?2. 涓婁紶鍗曚釜 `privacy-policy.html` 鍒版牴鐩綍
-3. 璁块棶锛歚https://klcoks.github.io/privacy-policy.html`
-
-> 鎺ㄨ崘鏂规硶 A锛岄『渚挎妸椤圭洰婧愮爜涔熷紑婧愪簡锛屽澧炲姞淇′换搴︽湁甯姪銆?
 ---
 
-## 馃殌 鎻愪氦鍚?
-- 瀹℃牳閫氬父 1-3 涓伐浣滄棩
-- 閫氳繃鍚庝細鏀跺埌閭欢锛岄摼鎺ユ槸 `https://chromewebstore.google.com/detail/<id>`
-- 绗竴娆℃彁浜ゅ彲鑳借閫€鍥炶琛ュ厖淇℃伅锛堟渶甯歌锛氭潈闄愯鏄庝笉澶熻缁嗭級锛屾寜閭欢鎸囧紩琛ュ厖閲嶆柊鎻愪氦鍗冲彲
+## 🖼️ Required Screenshots
 
-鍔犳补锛?
+Chrome Web Store requires 1-5 screenshots:
+
+- **Size**: 1280×800 or 640×400 pixels
+- **Format**: PNG or JPEG
+
+### Suggested 5 screenshots
+
+1. **Hero**: popup expanded on a content-rich page, showing "Save whole page" button
+2. **AI processing**: popup with "Analyzing with AI..." status
+3. **Saved**: popup showing "Saved ✓" + recent saves list
+4. **Notion result**: your Notion database with several entries saved by NotePin (showing tags, category, summary)
+5. **Settings**: English options page with the language selector visible
+
+### How to capture
+
+The simplest way:
+1. Open a content-rich page (e.g. a blog post)
+2. Set Chrome zoom to 100%
+3. Use Win+Shift+S (Windows) or a screenshot extension (e.g. GoFullPage)
+4. Resize to 1280×800 in any image editor (e.g. https://www.figma.com for free)
+
+If you'd like, I can write a Playwright script to auto-generate all 5 screenshots.
+
+---
+
+## 🎨 Promotional Images (recommended)
+
+### Small promo tile (required for featuring)
+- Size: 440×280
+- Content: NotePin logo + brand name + 1-line slogan
+
+### Marquee (optional, for featured placements)
+- Size: 1400×560
+- Content: richer hero image
+
+---
+
+## ✅ Pre-submission Checklist
+
+- [ ] Register Chrome Developer account ($5 one-time): https://chrome.google.com/webstore/devconsole
+- [ ] Enable GitHub Pages on `klcoks/notepin` (Settings → Pages → main branch / root)
+- [ ] Verify privacy policy URL works: https://klcoks.github.io/notepin/store-assets/privacy-policy.html
+- [ ] Prepare 1-5 screenshots at 1280×800
+- [ ] Prepare 440×280 small promo tile (optional but recommended)
+- [ ] Upload `dist/notepin-v1.0.0.zip`
+- [ ] Fill listing description (copy from above)
+- [ ] Single purpose: `Save web pages with AI summaries to a Notion database`
+- [ ] Permission justification (one line per permission, see privacy-policy.html section 4)
+- [ ] Category: Productivity
+- [ ] Maturity rating: Everyone
+- [ ] Submit for review
+
+---
+
+## 🚀 After submission
+
+- Review usually takes 1-3 business days
+- You'll get an email when approved with a link like `https://chromewebstore.google.com/detail/<id>`
+- First submission is sometimes rejected for missing details (most commonly: insufficient permission justification). Just respond and resubmit.
+
+Good luck!
