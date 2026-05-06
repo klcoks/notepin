@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title data-i18n="options.title">NotePin Settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <header class="page-header">
+      <div>
+        <h1>📌 <span data-i18n="options.title"></span></h1>
+        <p class="sub" data-i18n="options.subtitle"></p>
+      </div>
+      <div class="lang-switch">
+        <label data-i18n="options.language"></label>
+        <select id="lang-select">
+          <option value="en" data-i18n="options.lang_en"></option>
+          <option value="zh" data-i18n="options.lang_zh"></option>
+        </select>
+      </div>
+    </header>
+
+    <section class="card">
+      <h2 data-i18n="options.deepseek_title"></h2>
+      <p class="hint">
+        <span data-i18n="options.deepseek_hint"></span>
+        <a href="https://platform.deepseek.com/api_keys" target="_blank" data-i18n="options.apply_here"></a>
+        <span data-i18n="options.deepseek_cost"></span>
+      </p>
+      <div class="form-row">
+        <input type="password" id="deepseekKey" data-i18n-attr="placeholder:options.deepseek_placeholder" />
+        <button class="btn btn-secondary" id="btn-test-deepseek" data-i18n="options.btn_test"></button>
+      </div>
+      <p class="hint" id="deepseekStatus"></p>
+    </section>
+
+    <section class="card">
+      <h2 data-i18n="options.notion_title"></h2>
+      <p class="hint" data-i18n="options.notion_intro"></p>
+      <ol class="steps">
+        <li>
+          <span data-i18n="options.step1"></span>
+          <a href="https://www.notion.so/my-integrations" target="_blank">Notion Integrations</a>
+          <span data-i18n="options.step1_after"></span>
+          <code>secret_</code>
+          <span data-i18n="options.step1_after2"></span>
+          <code>ntn_</code>
+          <span data-i18n="options.step1_after3"></span>
+        </li>
+        <li>
+          <span data-i18n="options.step2_intro"></span>
+          <ul>
+            <li><code>Title</code> / <code>标题</code> <span data-i18n="options.field_title"></span></li>
+            <li><code>URL</code> / <code>链接</code> <span data-i18n="options.field_url"></span></li>
+            <li><code>Summary</code> / <code>摘要</code> <span data-i18n="options.field_summary"></span></li>
+            <li><code>Tags</code> / <code>标签</code> <span data-i18n="options.field_tags"></span></li>
+            <li><code>Category</code> / <code>分类</code> <span data-i18n="options.field_category"></span></li>
+            <li><code>Saved At</code> / <code>收藏时间</code> <span data-i18n="options.field_saved_at"></span></li>
+          </ul>
+        </li>
+        <li data-i18n="options.step3"></li>
+        <li data-i18n="options.step4"></li>
+      </ol>
+
+      <label data-i18n="options.notion_token_label"></label>
+      <div class="form-row">
+        <input type="password" id="notionToken" data-i18n-attr="placeholder:options.notion_token_placeholder" />
+        <button class="btn btn-secondary" id="btn-test-notion" data-i18n="options.btn_test"></button>
+      </div>
+
+      <label data-i18n="options.notion_db_label"></label>
+      <div class="form-row">
+        <input type="text" id="notionDbId" data-i18n-attr="placeholder:options.notion_db_placeholder" />
+      </div>
+      <p class="hint" id="notionStatus"></p>
+    </section>
+
+    <div class="actions">
+      <button class="btn btn-primary" id="btn-save" data-i18n="options.btn_save"></button>
+      <span id="saveStatus" class="hint"></span>
+    </div>
+
+    <section class="card help" id="help">
+      <h2 data-i18n="options.help_title"></h2>
+      <ul>
+        <li>📄 <span data-i18n="options.help_save_page"></span></li>
+        <li>✂️ <span data-i18n="options.help_save_selection"></span></li>
+        <li>⌨️ <strong data-i18n="options.help_shortcut"></strong>: <span data-i18n="options.help_shortcut_value"></span></li>
+      </ul>
+
+      <h2 data-i18n="options.faq_title"></h2>
+      <details>
+        <summary data-i18n="options.faq_q1"></summary>
+        <p data-i18n="options.faq_a1"></p>
+      </details>
+      <details>
+        <summary data-i18n="options.faq_q2"></summary>
+        <p data-i18n="options.faq_a2"></p>
+      </details>
+      <details>
+        <summary data-i18n="options.faq_q3"></summary>
+        <p data-i18n="options.faq_a3"></p>
+      </details>
+    </section>
+  </div>
+  <script type="module" src="options.js"></script>
+</body>
+</html>

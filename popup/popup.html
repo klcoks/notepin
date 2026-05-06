@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title data-i18n="app.name">NotePin</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="logo">
+        <span class="logo-icon">📌</span>
+        <span class="logo-text" data-i18n="app.name">NotePin</span>
+      </div>
+      <button class="icon-btn" id="btn-options" data-i18n-attr="title:popup.settings_btn_title">⚙️</button>
+    </header>
+
+    <div id="not-configured" class="banner hidden">
+      <p data-i18n="popup.banner_msg"></p>
+      <button class="btn btn-primary" id="btn-go-options" data-i18n="popup.go_settings"></button>
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-primary btn-block" id="btn-save-page">
+        <span>📄</span><span data-i18n="popup.save_page"></span>
+      </button>
+      <button class="btn btn-secondary btn-block" id="btn-save-selection">
+        <span>✂️</span><span data-i18n="popup.save_selection"></span>
+      </button>
+      <p class="tip"><span data-i18n="popup.shortcut_label"></span><kbd>Ctrl+Shift+S</kbd></p>
+    </div>
+
+    <div id="status" class="status hidden"></div>
+
+    <div class="history">
+      <div class="history-header">
+        <h3 data-i18n="popup.recent_saves"></h3>
+        <button class="link-btn" id="btn-clear" data-i18n="popup.clear"></button>
+      </div>
+      <ul id="history-list" class="history-list"></ul>
+      <p id="history-empty" class="empty" data-i18n="popup.empty"></p>
+    </div>
+
+    <footer class="footer">
+      <span>v1.0.0</span>
+      <a href="#" id="btn-help" data-i18n="popup.help"></a>
+    </footer>
+  </div>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

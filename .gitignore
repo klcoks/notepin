@@ -1,0 +1,35 @@
+# Build output
+dist/
+*.zip
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Node (if we add tooling later)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Local secrets (just in case)
+.env
+.env.local
+secrets.json
+
+# Internal codechat tooling
+codechat/
+temp/
+.windsurfrules
+.windsurf/
+
+# Project notes (private)
+progress.txt
+NOTES.md
