@@ -19,6 +19,9 @@ node_modules/
 package-lock.json
 yarn.lock
 
+# Screenshot output (regenerable)
+screenshots/output/
+
 # Local secrets (just in case)
 .env
 .env.local

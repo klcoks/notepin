@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NotePin Screenshot Scenes</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", sans-serif;
+    background: #0f172a;
+    color: #fff;
+  }
+
+  /* 1280x800 canvas */
+  .scene {
+    width: 1280px;
+    height: 800px;
+    position: relative;
+    overflow: hidden;
+    display: none;
+  }
+  .scene.active { display: block; }
+
+  /* Backgrounds */
+  .bg-blue { background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 60%, #1e3a8a 100%); }
+  .bg-purple { background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 60%, #4338ca 100%); }
+  .bg-green { background: linear-gradient(135deg, #10b981 0%, #059669 60%, #047857 100%); }
+  .bg-dark { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); }
+  .bg-warm { background: linear-gradient(135deg, #f59e0b 0%, #ea580c 60%, #c2410c 100%); }
+
+  /* Common decoration */
+  .scene::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 20% 80%, rgba(255,255,255,0.08) 0%, transparent 40%),
+                      radial-gradient(circle at 80% 20%, rgba(255,255,255,0.06) 0%, transparent 40%);
+    pointer-events: none;
+  }
+
+  .headline {
+    position: absolute;
+    left: 80px;
+    top: 110px;
+    z-index: 2;
+    max-width: 540px;
+  }
+  .headline h1 {
+    font-size: 56px;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+    text-shadow: 0 2px 30px rgba(0,0,0,0.3);
+  }
+  .headline p {
+    font-size: 22px;
+    line-height: 1.5;
+    opacity: 0.92;
+    font-weight: 500;
+  }
+  .headline .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  /* Browser frame mock */
+  .browser {
+    position: absolute;
+    top: 80px;
+    right: 60px;
+    width: 600px;
+    background: #f3f4f6;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.1);
+  }
+  .browser-bar {
+    background: #e5e7eb;
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .browser-bar .dot {
+    width: 12px; height: 12px; border-radius: 50%;
+  }
+  .browser-bar .red { background: #ef4444; }
+  .browser-bar .yellow { background: #f59e0b; }
+  .browser-bar .green { background: #10b981; }
+  .browser-bar .url {
+    flex: 1;
+    background: #fff;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    color: #6b7280;
+    margin-left: 12px;
+  }
+  .browser-content {
+    background: #fff;
+    height: 480px;
+    padding: 30px;
+    color: #1f2328;
+    overflow: hidden;
+    position: relative;
+  }
+  .browser-content h2 { font-size: 20px; margin-bottom: 12px; color: #111; }
+  .browser-content p { font-size: 13px; color: #4b5563; line-height: 1.7; margin-bottom: 8px; }
+
+  /* Popup widget (overlapping browser) */
+  .popup {
+    position: absolute;
+    width: 360px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 25px 80px rgba(0,0,0,0.4), 0 0 0 1px rgba(0,0,0,0.05);
+    color: #1f2328;
+    overflow: hidden;
+    font-size: 14px;
+  }
+  .popup-inner { padding: 16px; }
+  .popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  .popup-logo {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    font-size: 16px;
+  }
+  .popup-icon-btn {
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    padding: 4px 6px;
+    border-radius: 6px;
+  }
+  .popup-btn {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid transparent;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    cursor: pointer;
+  }
+  .popup-btn-primary { background: #2563eb; color: #fff; }
+  .popup-btn-secondary { background: #f3f4f6; color: #1f2328; border-color: #e5e7eb; }
+  .popup-tip {
+    color: #6b7280;
+    font-size: 12px;
+    text-align: center;
+    margin: 4px 0 16px;
+  }
+  .popup-tip kbd {
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    padding: 1px 5px;
+    font-size: 11px;
+    font-family: ui-monospace, monospace;
+  }
+
+  .status {
+    margin-bottom: 12px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+  }
+  .status-loading { background: #eff6ff; color: #1e40af; }
+  .status-success { background: #f0fdf4; color: #166534; }
+
+  .history h3 {
+    font-size: 13px;
+    font-weight: 600;
+    color: #4b5563;
+    margin-bottom: 8px;
+  }
+  .history-item {
+    padding: 8px 0;
+    border-bottom: 1px solid #f3f4f6;
+  }
+  .history-item:last-child { border-bottom: none; }
+  .history-title {
+    font-size: 13px;
+    color: #1f2328;
+    font-weight: 500;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .history-meta { display: flex; gap: 6px; flex-wrap: wrap; }
+  .tag-pill { font-size: 11px; padding: 1px 6px; background: #eef2ff; color: #4338ca; border-radius: 4px; }
+  .cat-pill { font-size: 11px; padding: 1px 6px; background: #f0fdf4; color: #166534; border-radius: 4px; }
+
+  /* Notion mock */
+  .notion-mock {
+    position: absolute;
+    top: 60px;
+    right: 60px;
+    left: 600px;
+    width: auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+    overflow: hidden;
+    color: #1f2328;
+  }
+  .notion-mock .nav {
+    background: #f7f6f3;
+    padding: 10px 16px;
+    border-bottom: 1px solid #e9e9e7;
+    font-size: 13px;
+    color: #6b7280;
+  }
+  .notion-mock .title {
+    padding: 24px 24px 12px;
+    font-size: 28px;
+    font-weight: 700;
+  }
+  .notion-mock table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .notion-mock th {
+    text-align: left;
+    background: #f7f6f3;
+    padding: 8px 12px;
+    color: #6b7280;
+    font-weight: 500;
+    font-size: 12px;
+    border-bottom: 1px solid #e9e9e7;
+  }
+  .notion-mock td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #f0efed;
+  }
+  .notion-mock .row-title {
+    color: #2563eb;
+    font-weight: 500;
+  }
+
+  /* Settings page mock */
+  .settings-mock {
+    position: absolute;
+    top: 60px;
+    right: 60px;
+    width: 640px;
+    background: #f9fafb;
+    border-radius: 12px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+    color: #1f2328;
+    overflow: hidden;
+  }
+  .settings-mock .head {
+    background: #fff;
+    padding: 24px;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .settings-mock .head h2 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+  .settings-mock .head .sub { color: #6b7280; font-size: 13px; }
+  .settings-mock .lang-pill {
+    background: #fff;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+  .settings-mock .card {
+    background: #fff;
+    margin: 16px;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+  }
+  .settings-mock .card h3 { font-size: 15px; margin-bottom: 6px; }
+  .settings-mock .card p { color: #6b7280; font-size: 12px; margin-bottom: 12px; }
+  .settings-mock .input-row { display: flex; gap: 8px; align-items: center; }
+  .settings-mock .input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-family: ui-monospace, monospace;
+    font-size: 13px;
+    color: #6b7280;
+  }
+  .settings-mock .test-btn {
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+  }
+  .settings-mock .ok { color: #166534; font-size: 12px; margin-top: 8px; }
+
+  /* Decorative emoji */
+  .deco-emoji {
+    position: absolute;
+    font-size: 80px;
+    opacity: 0.18;
+    pointer-events: none;
+  }
+
+  /* Step indicator */
+  .steps {
+    position: absolute;
+    bottom: 60px;
+    left: 80px;
+    display: flex;
+    gap: 30px;
+    z-index: 2;
+  }
+  .step-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 10px 16px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .step-num {
+    width: 22px;
+    height: 22px;
+    background: #fff;
+    color: #1d4ed8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .footer-brand {
+    position: absolute;
+    bottom: 30px;
+    right: 60px;
+    font-size: 13px;
+    opacity: 0.7;
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+
+<!-- ====== Scene 1: HERO ====== -->
+<div class="scene bg-blue" id="scene-1">
+  <div class="headline">
+    <span class="badge">📌 NotePin · Chrome Extension</span>
+    <h1>One-click save<br>web pages to Notion.</h1>
+    <p>Press <strong>Ctrl+Shift+S</strong> on any page. AI auto-summarizes, tags and categorizes. Saved straight into your own Notion database.</p>
+  </div>
+  <div class="deco-emoji" style="top:550px;left:140px;">✨</div>
+
+  <!-- Mock browser -->
+  <div class="browser">
+    <div class="browser-bar">
+      <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+      <div class="url">https://blog.example.com/the-future-of-knowledge</div>
+    </div>
+    <div class="browser-content">
+      <h2>The Future of Personal Knowledge Management</h2>
+      <p>For decades, we have been collecting bookmarks, screenshots, and notes scattered across dozens of apps. The promise of a "second brain" remains largely unfulfilled — not because the tools are inadequate, but because the friction of capture remains too high.</p>
+      <p>What if saving a page were as effortless as starring a tweet? What if AI could pre-digest content the moment you save it, so your future self always finds organized, summarized notes — never raw clutter?</p>
+      <p>This is the bet behind a new generation of clipping tools...</p>
+    </div>
+  </div>
+
+  <!-- Popup overlapping -->
+  <div class="popup" style="top:200px;right:90px;">
+    <div class="popup-inner">
+      <div class="popup-header">
+        <div class="popup-logo"><span>📌</span><span>NotePin</span></div>
+        <button class="popup-icon-btn">⚙️</button>
+      </div>
+      <button class="popup-btn popup-btn-primary">📄 Save whole page</button>
+      <button class="popup-btn popup-btn-secondary">✂️ Save selection</button>
+      <p class="popup-tip">Shortcut: <kbd>Ctrl+Shift+S</kbd></p>
+    </div>
+  </div>
+
+  <div class="footer-brand">github.com/klcoks/notepin</div>
+</div>
+
+<!-- ====== Scene 2: AI PROCESSING ====== -->
+<div class="scene bg-purple" id="scene-2">
+  <div class="headline">
+    <span class="badge">🤖 Powered by DeepSeek</span>
+    <h1>AI does the<br>boring part.</h1>
+    <p>Every save gets a 3-sentence summary, 3-5 relevant tags, and a smart category — all in seconds. So your notes are organized before you even open them.</p>
+  </div>
+
+  <div class="popup" style="top:160px;right:200px;width:380px;">
+    <div class="popup-inner">
+      <div class="popup-header">
+        <div class="popup-logo"><span>📌</span><span>NotePin</span></div>
+        <button class="popup-icon-btn">⚙️</button>
+      </div>
+      <div class="status status-loading">
+        <span style="display:inline-block;animation:spin 1s linear infinite;">⟳</span> Analyzing with AI...
+      </div>
+      <button class="popup-btn popup-btn-primary" style="opacity:.6">📄 Save whole page</button>
+      <button class="popup-btn popup-btn-secondary" style="opacity:.6">✂️ Save selection</button>
+    </div>
+  </div>
+
+  <div class="steps">
+    <div class="step-item"><span class="step-num">1</span>Capture page</div>
+    <div class="step-item"><span class="step-num">2</span>AI summarize</div>
+    <div class="step-item"><span class="step-num">3</span>Save to Notion</div>
+  </div>
+  <div class="footer-brand">3 seconds, fully automated</div>
+</div>
+
+<!-- ====== Scene 3: SAVED + HISTORY ====== -->
+<div class="scene bg-green" id="scene-3">
+  <div class="headline">
+    <span class="badge">✓ Saved instantly</span>
+    <h1>Recent saves at<br>your fingertips.</h1>
+    <p>Local history with AI-generated tags & categories. Click any item to jump back to the Notion page. Never lose track of what you saved.</p>
+  </div>
+
+  <div class="popup" style="top:120px;right:140px;width:380px;">
+    <div class="popup-inner">
+      <div class="popup-header">
+        <div class="popup-logo"><span>📌</span><span>NotePin</span></div>
+        <button class="popup-icon-btn">⚙️</button>
+      </div>
+      <div class="status status-success">Saved ✓ Tech | Building Second Brain Tools</div>
+      <button class="popup-btn popup-btn-primary">📄 Save whole page</button>
+      <button class="popup-btn popup-btn-secondary">✂️ Save selection</button>
+      <p class="popup-tip">Shortcut: <kbd>Ctrl+Shift+S</kbd></p>
+
+      <div class="history">
+        <h3>Recent saves</h3>
+        <div class="history-item">
+          <div class="history-title">Building Second Brain Tools in 2026</div>
+          <div class="history-meta">
+            <span class="cat-pill">Tech</span>
+            <span class="tag-pill">Notion</span>
+            <span class="tag-pill">Productivity</span>
+            <span class="tag-pill">AI</span>
+          </div>
+        </div>
+        <div class="history-item">
+          <div class="history-title">The Pragmatic Engineer Newsletter #142</div>
+          <div class="history-meta">
+            <span class="cat-pill">Industry</span>
+            <span class="tag-pill">Engineering</span>
+            <span class="tag-pill">Career</span>
+          </div>
+        </div>
+        <div class="history-item">
+          <div class="history-title">Designing for Effortless Capture</div>
+          <div class="history-meta">
+            <span class="cat-pill">Inspiration</span>
+            <span class="tag-pill">UX</span>
+            <span class="tag-pill">Design</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-brand">Click any item → opens in Notion</div>
+</div>
+
+<!-- ====== Scene 4: NOTION RESULT ====== -->
+<div class="scene bg-dark" id="scene-4">
+  <div class="headline" style="top:80px;max-width:440px;">
+    <span class="badge">📚 Your Notion, structured</span>
+    <h1>From clutter to<br>knowledge base.</h1>
+    <p>Every page you save becomes a structured row in your Notion database — with summary, tags, category, source URL, and timestamp. Searchable, filterable, yours.</p>
+  </div>
+
+  <div class="notion-mock" style="top:60px;left:540px;right:60px;">
+    <div class="nav">📌 Workspace / Knowledge Hub / Web Clips</div>
+    <div class="title">📚 Web Clips</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Category</th>
+          <th>Tags</th>
+          <th>Saved At</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="row-title">Building Second Brain Tools in 2026</td>
+          <td><span class="cat-pill">Tech</span></td>
+          <td><span class="tag-pill">Notion</span> <span class="tag-pill">AI</span></td>
+          <td style="color:#9ca3af;font-size:12px;">May 6, 12:30</td>
+        </tr>
+        <tr>
+          <td class="row-title">The Pragmatic Engineer #142</td>
+          <td><span class="cat-pill">Industry</span></td>
+          <td><span class="tag-pill">Career</span></td>
+          <td style="color:#9ca3af;font-size:12px;">May 6, 11:50</td>
+        </tr>
+        <tr>
+          <td class="row-title">Designing for Effortless Capture</td>
+          <td><span class="cat-pill">Inspiration</span></td>
+          <td><span class="tag-pill">UX</span> <span class="tag-pill">Design</span></td>
+          <td style="color:#9ca3af;font-size:12px;">May 5, 22:15</td>
+        </tr>
+        <tr>
+          <td class="row-title">DeepSeek API Best Practices</td>
+          <td><span class="cat-pill">Tutorial</span></td>
+          <td><span class="tag-pill">API</span> <span class="tag-pill">LLM</span></td>
+          <td style="color:#9ca3af;font-size:12px;">May 5, 18:42</td>
+        </tr>
+        <tr>
+          <td class="row-title">Why I Replaced 12 Apps with Notion</td>
+          <td><span class="cat-pill">Inspiration</span></td>
+          <td><span class="tag-pill">Notion</span> <span class="tag-pill">Workflow</span></td>
+          <td style="color:#9ca3af;font-size:12px;">May 5, 14:08</td>
+        </tr>
+        <tr>
+          <td class="row-title">A Guide to Bilingual Chrome Extensions</td>
+          <td><span class="cat-pill">Tutorial</span></td>
+          <td><span class="tag-pill">i18n</span> <span class="tag-pill">Chrome</span></td>
+          <td style="color:#9ca3af;font-size:12px;">May 5, 10:33</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="footer-brand">Auto-detects English & Chinese field names</div>
+</div>
+
+<!-- ====== Scene 5: BILINGUAL SETTINGS ====== -->
+<div class="scene bg-warm" id="scene-5">
+  <div class="headline" style="max-width:440px;">
+    <span class="badge">🌐 Bilingual UI</span>
+    <h1>English or 中文.<br>Your choice.</h1>
+    <p>Switch languages with one click. NotePin auto-detects whether your Notion database uses English or Chinese field names — no migration needed.</p>
+  </div>
+
+  <div class="settings-mock" style="top:50px;right:50px;">
+    <div class="head">
+      <div>
+        <h2>📌 NotePin Settings</h2>
+        <div class="sub">Configure once, use forever. All keys stay on your device.</div>
+      </div>
+      <select class="lang-pill">
+        <option>English ▾</option>
+      </select>
+    </div>
+    <div class="card">
+      <h3>1. DeepSeek API Key</h3>
+      <p>Used for AI summary, tags and categorization.</p>
+      <div class="input-row">
+        <div class="input">••••••••••••••••••••••••</div>
+        <button class="test-btn">Test</button>
+      </div>
+      <div class="ok">✓ DeepSeek connected</div>
+    </div>
+    <div class="card">
+      <h3>2. Notion Integration</h3>
+      <p>Save content into your Notion database.</p>
+      <div class="input-row" style="margin-bottom:8px;">
+        <div class="input">secret_••••••••••••••••</div>
+        <button class="test-btn">Test</button>
+      </div>
+      <div class="input-row">
+        <div class="input">a1b2c3d4e5f6789012345678abcdef01</div>
+      </div>
+      <div class="ok">✓ Notion Token and Database both verified</div>
+    </div>
+  </div>
+  <div class="footer-brand">github.com/klcoks/notepin</span></div>
+</div>
+
+<style>
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+</style>
+
+<script>
+  // For Playwright: page.evaluate(s => showScene(s)) toggles scenes
+  function showScene(n) {
+    document.querySelectorAll('.scene').forEach(el => el.classList.remove('active'));
+    const target = document.getElementById('scene-' + n);
+    if (target) target.classList.add('active');
+  }
+  // Default: show scene 1
+  showScene(1);
+  window.showScene = showScene;
+</script>
+</body>
+</html>

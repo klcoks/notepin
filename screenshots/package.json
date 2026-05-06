@@ -1,0 +1,12 @@
+{
+  "name": "notepin-screenshots",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Generate Chrome Web Store screenshots for NotePin",
+  "scripts": {
+    "shoot": "node take.js"
+  },
+  "dependencies": {
+    "playwright": "^1.48.0"
+  }
+}
